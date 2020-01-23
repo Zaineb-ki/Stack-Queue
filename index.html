@@ -2,23 +2,48 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/main.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- javaScript -->
     <script type="text/javascript" src="script.js"></script>
+    <!-- Font Awsome -->
+    <script src="https://kit.fontawesome.com/90140a3798.js" crossorigin="anonymous"></script>
     <title> Stack | Queue</title>
   </head>
   <body>
+  <!-- container | input -->
+    <section class="container" style="width: 40%; text-align: center; margin-left:29% ;">
+      
+      <h1>stack & Queue </h1>
+      <div class="value">
+        <input type="text" name="" value="" id="put" placeholder="Value" style="border: 0; border-bottom: 1px solid gray; background-color: rgb(195, 191, 191);">
+        <button type="button" name="button" onclick="addlast()" style="color: white; background-color: #CCAA11; border: 0; border-radius: 4px;">Add</button>
+      </div>
+      
+      <div class="stack-Queue">
+        <!-- stach/pile -->
+        <button type="button" name="button" onclick="popStack()" style="color: white; background-color: #CCAA11; border: 0; border-radius: 4px;">pop stack</button>
+        <!-- Queue/file -->
+        <button type="button" name="button" onclick="popQueue()" style="color: white; background-color: #CCAA11; border: 0; border-radius: 4px;">pop Queue</button>
+      </div>
+      <div class="back-next" style="height: 44px;margin-top: 23px;">
+        <button onclick="back();" style="background-color: gray; border: O; border-radius: 5px ;"><i  style="color: white;" class="fas fa-angle-up"></i></button>
+       <div style="width: 150px;">
+        <p id="data" style="color: gray; margin-top: 10px;">Empty List</p>
+       </div>
+        <button onclick="next();" style="background-color: gray; border: O; border-radius: 5px ;" ><i style="color: white;" class="fas fa-angle-down"></i></button>
+      </div>
+      <div class="clear" style="margin-top: -3px;">
+        <button onclick="clearList();" style="color: white; background-color: #CCAA11; border: 0; border-radius: 4px;">clear List</button>
+      </div>
 
-    <table>
-      <h1> Stack & Queue</h1>
-      <input type="text" name="" value="" id="put">
-      <button type="button" name="button" onclick="addlast()">Add</button>
-      <button type="button" name="button" onclick="popStack()">Stack</button>
-      <button type="button" name="button" onclick="popQueue()">Queue</button>
+      
+     
 
-
-      <div class="output" id="flist"></div>
-    </table>
-
-  </body>
+     
+      
+  
+    </body>
+    </section>
+ 
 </html>
-

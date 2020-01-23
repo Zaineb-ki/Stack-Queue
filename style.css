@@ -1,0 +1,31 @@
+body {
+    background-color: #f8f8f8;
+    font-family: cursive;
+    font-size: 270%;
+}
+.container{
+    text-align: center;
+    margin-top: 10%;
+    border: 0;
+    background-color: rgb(195, 191, 191);
+    border-radius: 6px;
+}
+
+h1{
+    font-size: 40px;
+    color: gray;
+}
+p{
+    font-size: 20px;
+}
+.container .stack-Queue{
+    display: block;
+    text-align: center;
+
+}
+.container .back-next{
+    display: flex;
+    justify-content: center;
+    
+
+}

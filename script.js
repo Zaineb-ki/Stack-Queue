@@ -1,7 +1,8 @@
 class Node {
-  constructor(data, next = null) {
+  constructor(data, next, back) {
     this.data = data;
-    this.next = next;
+    this.next = next || null;
+    this.back = back || null;
   }
 }
 
@@ -9,76 +10,73 @@ class stack {
   constructor() {
     this.head = null;
     this.size = 0;
+    this.current = null;
 }
-    //push the last input
-     pushToList() {
-      this.head = new Node(data, this.head);
-      this.size++;
-    }
 
     insertLast(data) {
       let node = new Node(data);
-      let current;
 
       if (!this.head) {
-        this.head = node;
+        this.current = this.head = node;
       } else {
-        current = this.head;
-
-        while (current.next) {
-          current = current.next;
+        let temp = this.head;
+        this.head = node;
+        temp.next = node;
+        node.back = temp;
         }
 
-        current.next = node;
-      }
 
       this.size++;
     }
 
-    printListData() {
-      let current = this.head;
-      var tab=[];
-      while (current) {
-          tab.push(current.data);
-        console.log(current.data);
-        current = current.next;
-      }
-      return tab;
-    }
+
 
     removeLast() {
 
-      let current = this.head;
-      let previous;
-      let count = 0;
-
-      if(!this.head.next){
-      this.head = null;
-      return;
-      }else {
-
-        while (count < this.size - 1) {
-          count++;
-          previous = current;
-          current = current.next;
-        }
-
-        previous.next = current.next;
-        }
-
-
-      this.size--;
+      if (this.head && this.head === this.current) {
+          this.current = this.head.back;
+      }
+      if (this.head && this.head.back) {
+          this.head = this.head.back;
+          this.head.next = null;
+      } else {
+          this.head = this.current = null;
+      }
     }
 
     removeFirst() {
 
       let current = this.head;
 
-        this.head = current.next;
+      this.head = current.next;
 
       this.size--;
     }
+
+    moveNext() {
+        if (this.current && this.current.next)
+            this.current = this.current.next;
+    }
+    moveBack() {
+        if (this.current && this.current.back)
+            this.current = this.current.back;
+    }
+
+    printListData() {
+      if (this.current)
+      return this.current.data;
+      else{
+        return "Empty List";
+        }
+
+      }
+      clearList(){
+        this.current = null;
+        this.head = null;
+        this.size = 0;
+      }
 }
+
 
 
 
@@ -87,16 +85,26 @@ class stack {
 
   function addlast() {
     list.insertLast(document.getElementById("put").value);
-    document.getElementById('flist').innerHTML = list.printListData();
+    document.getElementById('data').innerHTML = list.printListData();
     document.getElementById('put').value = '';
   }
 
   function popStack() {
     list.removeLast(document.getElementById("put").value);
-    document.getElementById('flist').innerHTML = list.printListData();
+    document.getElementById('data').innerHTML = list.printListData();
   }
 
   function popQueue() {
     list.removeFirst(document.getElementById("put").value);
-    document.getElementById('flist').innerHTML = list.printListData();
+    document.getElementById('data').innerHTML = list.printListData();
+  }
+
+  function next() {
+      list.moveNext();
+      document.getElementById('data').innerHTML = list.printListData();
+  }
+
+  function back() {
+      list.moveBack();
+      document.getElementById('data').innerHTML = list.printListData();
   }
