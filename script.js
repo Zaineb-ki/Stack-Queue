@@ -45,10 +45,20 @@ class stack {
     }
 
     removeFirst() {
+        let current = this.head;
 
-      let current = this.head;
+        if (this.size === 1) {
+          this.head = null;
+          this.current = null ;
+        }
+        else {
 
-      this.head = current.next;
+          while (current.back && current.back.back) {
+            current = current.back;
+          }
+          current.back = null;
+          this.current = current;
+         }
 
       this.size--;
     }
